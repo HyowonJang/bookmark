@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+<!--base.html 파일을 상속받을 것이므로 html의 기본구조는 중복되지 않도록 삭제-->
+
+{% block content %}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Site Name</th>
+            <th>URL</th>
+            <th><button class="btn btn-sm btn-warning">M</button></th>
+            <th><button class="btn btn-sm btn-danger">D</button></th>
+        </tr>
+    </thead>
+
+{%for object in object_list%}
+    <tr>
+        <td>{{object.id}}</td>
+        <td>{{object.site_name}}</td>
+        <td><a href="{{object.url}}" target="_blank">이동</a></td>
+        <td><a href="{% url 'bookmark_update' object.id %}">수정</a></td>
+        <td><a href="{% url 'bookmark_delete' pk=object.id %}">삭제</a></td>
+    </tr>
+{%endfor%}
+
+</table>
+<a href="{% url 'bookmark_create' %}" class="btn btn-lg btn-primary">등록</a>
+{% endblock%}

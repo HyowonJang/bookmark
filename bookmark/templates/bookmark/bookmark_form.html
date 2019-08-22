@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+<!-- create, update라는 기능보다는 form이라는 형태를 담아야 함으로 이름이 form이고, create와 update로 나누기도 한다 -->
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <!-- csrf : post로 정보를 전달할 때 이 사이트에서 보낸 것이 맞다 라는 것을 알려주는 key, "post" method를 쓸 때 대부 같이 쓴다 -->
+    {{ form.as_p }}
+    <input type="submit" value="완료" class="btn btn-success">
+</form>
+{% endblock%}
